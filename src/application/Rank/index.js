@@ -10,7 +10,7 @@ import {
 } from './style';
 import Scroll from '../../baseUI/scroll/index';
 import { EnterLoading } from './../Singers/style';
-import { filterIndex, filterIdx } from '../../api/utils';
+import { filterIndex } from '../../api/utils';
 import { renderRoutes } from 'react-router-config';
 
 function Rank(props) {
@@ -32,12 +32,8 @@ function Rank(props) {
   let globalList = rankList.slice(globalStartIndex);
 
   //如果请求到的歌曲为空的话就返回提示
-  const enterDetail = (name) => {
-      const idx = filterIdx(name);
-      if(idx === null) {
-        alert("暂无相关数据");
-        return;
-      } 
+  const enterDetail = (detail) => {
+    props.history.push(`./rank/${detail.id}`)
   }
   //榜单图片旁边的展示歌曲
   const renderSongList = (list) => {
@@ -57,12 +53,13 @@ function Rank(props) {
        {
         list.map((item,index) => {
           return (
-            <ListItem key={item.coverImgId+''+index} tracks={item.tracks} onClick={() => enterDetail(item.name)}>
+            <ListItem key={item.coverImgId+''+index} tracks={item.tracks} onClick={() => enterDetail(item)}>
               <div className="img_wrapper">
                 <img src={item.coverImgUrl} alt=""/>
                 <div className="decorate"></div>
                 <span className="update_frequecy">{item.updateFrequency}</span>
               </div>
+              {/* 渲染rank下的路由 */}
               { renderSongList(item.tracks)  }
             </ListItem>
           )

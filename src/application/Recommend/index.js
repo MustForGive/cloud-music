@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { forceCheck } from 'react-lazyload'
+import {renderRoutes} from 'react-router-config'
 
 import Slider from '../../components/slider'
 import Scroll from '../../baseUI/scroll/index'
@@ -42,6 +43,8 @@ function Recommend(props) {
       </Scroll>
       {/* 判断是否接收到response，未收到就使用Loading动画 */}
       {enterLoading ?<Loading></Loading> : null}
+      {/* 由于无法渲染下一层路由，需要通过这种方式渲染下一层路由 */}
+      {renderRoutes(props.route.routes)}
     </Content>
 
   )
