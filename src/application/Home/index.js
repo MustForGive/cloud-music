@@ -6,6 +6,7 @@ import {
   TabItem
 } from './styled'
 import { NavLink } from 'react-router-dom';
+import  Player from '../Player'
 
 function Home (props) {
   const { route } = props;
@@ -24,6 +25,7 @@ function Home (props) {
       </Tab>
       {/* renderRoutes 只能渲染一层路由，所以如果多层路由，需要多次使用渲染 */}
       { renderRoutes (route.routes) }
+      <Player></Player>
     </div>
   )
 }

@@ -5,6 +5,7 @@ import Recommend from '../application/Recommend';
 import Singers from '../application/Singers';
 import Rank from '../application/Rank';
 import Album from '../application/Album/index'
+import Singer from '../application/Singer/index'
 
 export default [
   {
